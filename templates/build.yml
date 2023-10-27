@@ -24,18 +24,18 @@ steps:
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Create code coverage report'
-  inputs:
-    command: custom
-    custom: tool
-    arguments: 'run reportgenerator -reports:${{ parameters.buildConfiguration }}/**/coverage.cobertura.xml -targetdir:${{ parameters.buildConfiguration }}/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
+#- task: DotNetCoreCLI@2
+#  displayName: 'Create code coverage report'
+#  inputs:
+#    command: custom
+#    custom: tool
+#    arguments: 'run reportgenerator -reports:${{ parameters.buildConfiguration }}/**/coverage.cobertura.xml -targetdir:${{ parameters.buildConfiguration }}/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
 
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publish code coverage report'
-  inputs:
-    codeCoverageTool: 'cobertura'
-    summaryFileLocation: '${{ parameters.buildConfiguration }}/**/coverage.cobertura.xml'
+#- task: PublishCodeCoverageResults@1
+#  displayName: 'Publish code coverage report'
+#  inputs:
+#    codeCoverageTool: 'cobertura'
+#    summaryFileLocation: '${{ parameters.buildConfiguration }}/**/coverage.cobertura.xml'
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - ${{ parameters.buildConfiguration }}'
